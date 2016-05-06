@@ -1,7 +1,6 @@
-﻿# -*- coding: utf-8 -*-
-__all__ = []
+# -*- coding: utf-8 -*-
+__all__ = [ 'logs' ]
 
-from .. import NTM
 from .. import dictConfig
 from .. import NOTSET, DEBUG, INFO, WARNING, ERROR, CRITICAL
 from .. import jsonOp

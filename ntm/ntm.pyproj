@@ -29,29 +29,57 @@
     <Compile Include="community\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="crawler\api\tweetsCollector.py" />
-    <Compile Include="crawler\api\twitterAPI.py" />
-    <Compile Include="crawler\api\twitterLogin.py" />
-    <Compile Include="crawler\api\__init__.py">
+    <Compile Include="crawlers\api\tweetsCollector.py" />
+    <Compile Include="crawlers\api\twitterAPI.py" />
+    <Compile Include="crawlers\api\twitterLogin.py" />
+    <Compile Include="crawlers\api\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="crawler\web\__init__.py">
+    <Compile Include="crawlers\web\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="crawler\__init__.py">
+    <Compile Include="crawlers\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="db\emptyDB.py" />
-    <Compile Include="db\freqUpdate.py" />
-    <Compile Include="db\initiallizeDB.py" />
-    <Compile Include="db\showDB.py" />
-    <Compile Include="db\__init__.py">
+    <Compile Include="database\dba.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="database\dbi.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="database\dbm.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="database\dbo.py" />
+    <Compile Include="database\emptyDB.py" />
+    <Compile Include="database\freqUpdate.py" />
+    <Compile Include="database\initiallizeDB.py" />
+    <Compile Include="database\db.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="database\mysql\dba.py" />
+    <Compile Include="database\mysql\dbi.py" />
+    <Compile Include="database\mysql\dbm.py" />
+    <Compile Include="database\mysql\dbo.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="database\mysql\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="database\showDB.py" />
+    <Compile Include="database\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="gui\web\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="gui\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="logs\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Factory.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ntm.py" />
@@ -72,20 +100,50 @@
     <Compile Include="sentiment\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="utilities\fileop.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="logs\logs.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="utilities\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="community\" />
     <Folder Include="community\data\" />
-    <Folder Include="crawler\" />
-    <Folder Include="crawler\api\" />
-    <Folder Include="crawler\web\" />
-    <Folder Include="db\" />
+    <Folder Include="crawlers\" />
+    <Folder Include="crawlers\api\" />
+    <Folder Include="crawlers\web\" />
+    <Folder Include="database\" />
+    <Folder Include="database\mysql\" />
     <Folder Include="gui\" />
     <Folder Include="gui\web\" />
+    <Folder Include="logs\" />
+    <Folder Include="schemas\" />
     <Folder Include="pre-proc\" />
     <Folder Include="pre-proc\filter\" />
     <Folder Include="recomm\" />
     <Folder Include="sentiment\" />
+    <Folder Include="utilities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="community\config.json" />
+    <Content Include="config.json" />
+    <Content Include="crawlers\config.json" />
+    <Content Include="database\config.json" />
+    <Content Include="database\mysql\config.json" />
+    <Content Include="gui\config.json" />
+    <Content Include="logs\config.json" />
+    <Content Include="pre-proc\config.json" />
+    <Content Include="recomm\config.json" />
+    <Content Include="schemas\config-schema.json" />
+    <Content Include="sentiment\config.json" />
+    <Content Include="utilities\config.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

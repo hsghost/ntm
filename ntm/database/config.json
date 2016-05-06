@@ -1,0 +1,58 @@
+{
+  "db_list": [ "ntm-db" ],
+  "ntm-db": {
+    "db_tables": {
+      "tweets": {
+        "columns": {
+          "tweet_id": {
+            "data_length": 64,
+            "data_decimals": 0,
+            "data_type": "BIGINT",
+            "elements": [ ],
+            "nullable": false,
+            "options": [ ],
+            "unsigned": false,
+            "zerofill": false,
+            "default": "",
+            "auto_increment": false,
+            "comment": "",
+            "column_format": "DEFAULT",
+            "storage": "DEFAULT"
+          },
+          "dependency_order": [ "tweet_id" ]
+        },
+        "temporary": false,
+        "template": "",
+        "use_exsisting": false,
+        "engine": "InnoDB",
+        "indexes": {
+          "index_tweets": {
+            "constraint_symbol": "",
+            "index_command": "PRIMARY KEY",
+            "index_name": "ind_tid",
+            "index_columns": {
+              "tweet_id": "ASC",
+              "dependency_order": [ "tweet_id" ]
+            },
+            "references": {
+              "ref_table": "tweets",
+              "ref_columns": {
+                "tweet_id": "ASC",
+                "dependency_order": [ "tweet_id" ]
+              },
+              "matching": "MATCH FULL",
+              "on_delete": "CASCADE",
+              "on_update": "CASCADE"
+            }
+          },
+          "dependency_order": [ "index_tweets" ]
+        },
+        "check": "",
+        "row_format": "DEFAULT",
+        "union": [ ],
+        "select_clause": ""
+      },
+      "dependency_order": [ "tweets" ]
+    }
+  }
+}

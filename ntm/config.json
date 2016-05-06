@@ -1,0 +1,479 @@
+{
+  "ntm-config": {
+    "modules": {
+      "community": {
+        "logging": {
+          "version": 1,
+          "disable_existing_loggers": true,
+          "formatters": {
+            "ntm-default": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)s\t%(levelname)-8s\t%(name)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": false,
+              "single_line": true
+            },
+            "ntm-utc": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)s\t%(levelname)-8s\t%(name)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": true,
+              "single_line": true
+            }
+          },
+          "filters": {
+            "ntm-default": {
+              "()": "ntm.logs.logs.NtmLogsFilter",
+              "name": ""
+            }
+          },
+          "handlers": {
+            "null": {
+              "class": "ntm.logs.logs.NtmLogsNullHandler",
+              "level": "INFO"
+            },
+            "socket": {
+              "class": "ntm.logs.logs.NtmLogsSocketHandler",
+              "formatter": "ntm-default",
+              "host": "localhost",
+              "level": "INFO",
+              "port": "logging.handlers.DEFAULT_TCP_LOGGING_PORT"
+            }
+          },
+          "loggers": {
+            "ntm.community": {
+              "filters": [ "ntm-default" ],
+              "handlers": [ "socket" ],
+              "level": "INFO",
+              "propagate": false
+            }
+          }
+        }
+      },
+      "crawlers": {
+        "twitter": {
+
+        }
+      },
+      "database": {
+        "cls_cfg": {
+          "mysql": {
+            "dbo": {
+              "cls_import": { },
+              "cls_sig": "mysql",
+              "cls_bases": [ "object" ],
+              "cls_dict": {
+                "factory_class": false,
+                "recursive_level": 0
+              },
+              "cls_methods": {
+
+              }
+            },
+            "dba": {
+              "cls_import": { "MySQLConnection": "mysql.connector.connection" },
+              "cls_sig": "mysql",
+              "cls_bases": [ "MySQLConnection" ],
+              "cls_dict": {
+                "factory_class": false
+              },
+              "cls_methods": {
+
+              }
+            },
+            "dbi": {
+              "cls_import": { },
+              "cls_sig": "mysql",
+              "cls_bases": [ "object" ],
+              "cls_dict": {
+                "factory_class": false
+              },
+              "cls_methods": {
+
+              }
+            },
+            "dbm": {
+              "cls_import": { },
+              "cls_sig": "mysql",
+              "cls_bases": [ "object" ],
+              "cls_dict": {
+                "factory_class": false
+              },
+              "cls_methods": {
+
+              }
+            }
+          }
+        },
+        "obj_cfg": {
+
+        },
+        "logging": {
+          "version": 1,
+          "disable_existing_loggers": true,
+          "formatters": {
+            "ntm-mgmt": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)-23s\t%(levelname)-8s\t%(name)-16s\tIP: %(ip)-15s\tUser: %(user)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": false,
+              "single_line": true
+            },
+            "ntm-mgmt-utc": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)-23s\t%(levelname)-8s\t%(name)-16s\tIP: %(ip)-15s\tUser: %(user)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": true,
+              "single_line": true
+            }
+          },
+          "filters": {
+            "ntm-mgmt": {
+              "()": "ntm.logs.logs.NtmLogsContextualFilter",
+              "name": ""
+            }
+          },
+          "handlers": {
+            "null": {
+              "class": "ntm.logs.logs.NtmLogsNullHandler",
+              "level": "INFO"
+            },
+            "socket": {
+              "class": "ntm.logs.logs.NtmLogsSocketHandler",
+              "formatter": "ntm-mgmt",
+              "host": "localhost",
+              "level": "INFO",
+              "port": "logging.handlers.DEFAULT_TCP_LOGGING_PORT"
+            }
+          },
+          "loggers": {
+            "ntm.db": {
+              "filters": [ "ntm-mgmt" ],
+              "handlers": [ "socket" ],
+              "level": "INFO",
+              "propagate": false
+            }
+          }
+        }
+      },
+      "gui": {
+        "logging": {
+          "version": 1,
+          "disable_existing_loggers": true,
+          "formatters": {
+            "ntm-mgmt": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)-23s\t%(levelname)-8s\t%(name)-16s\tIP: %(ip)-15s\tUser: %(user)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": false,
+              "single_line": true
+            },
+            "ntm-mgmt-utc": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)-23s\t%(levelname)-8s\t%(name)-16s\tIP: %(ip)-15s\tUser: %(user)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": true,
+              "single_line": true
+            }
+          },
+          "filters": {
+            "ntm-mgmt": {
+              "()": "ntm.logs.logs.NtmLogsContextualFilter",
+              "name": ""
+            }
+          },
+          "handlers": {
+            "null": {
+              "class": "ntm.logs.logs.NtmLogsNullHandler",
+              "level": "INFO"
+            },
+            "socket": {
+              "class": "ntm.logs.logs.NtmLogsSocketHandler",
+              "formatter": "ntm-mgmt",
+              "host": "localhost",
+              "level": "INFO",
+              "port": "logging.handlers.DEFAULT_TCP_LOGGING_PORT"
+            }
+          },
+          "loggers": {
+            "ntm.gui": {
+              "filters": [ "ntm-mgmt" ],
+              "handlers": [ "socket" ],
+              "level": "INFO",
+              "propagate": false
+            }
+          }
+        }
+      },
+      "logs": {
+        "logging": {
+          "version": 1,
+          "disable_existing_loggers": true,
+          "formatters": {
+            "ntm-default": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)s\t%(levelname)-8s\t%(name)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": false,
+              "single_line": true
+            },
+            "ntm-utc": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)s\t%(levelname)-8s\t%(name)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": true,
+              "single_line": true
+            },
+            "ntm-contextual": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)-23s\t%(levelname)-8s\t%(name)-16s\tIP: %(ip)-15s\tUser: %(user)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": false,
+              "single_line": true
+            },
+            "ntm-contextual-utc": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)-23s\t%(levelname)-8s\t%(name)-16s\tIP: %(ip)-15s\tUser: %(user)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": true,
+              "single_line": true
+            }
+          },
+          "filters": {
+            "ntm-default": {
+
+            },
+            "ntm-contextual": {
+
+            }
+          },
+          "handlers": {
+            "null": {
+              "level": "INFO",
+              "class": "ntm.logs.logs.NtmLogsNullHandler"
+            },
+            "files": {
+              "level": "INFO",
+              "class": "ntm.logs.logs.NtmLogsFilesHandler",
+              "filename": "ntm.log",
+              "maxBytes": "1048576",
+              "backupCount": "2"
+            },
+            "console": {
+              "level": "ERROR",
+              "class": "ntm.logs.logs.NtmLogsConsoleHandler",
+              "stream": "ext://sys.stderr"
+            }
+          },
+          "loggers": {
+            "ntm.logs": {
+              "handlers": [ "files", "console" ],
+              "level": "INFO",
+              "propagate": false
+            }
+          },
+          "root": {
+            "handlers": [ "files", "console" ],
+            "level": "INFO"
+          }
+        }
+      },
+      "pre-proc": {
+        "logging": {
+          "version": 1,
+          "disable_existing_loggers": true,
+          "formatters": {
+            "ntm-default": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)s\t%(levelname)-8s\t%(name)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": false,
+              "single_line": true
+            },
+            "ntm-utc": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)s\t%(levelname)-8s\t%(name)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": true,
+              "single_line": true
+            }
+          },
+          "filters": {
+            "ntm-default": {
+              "()": "ntm.logs.logs.NtmLogsFilter",
+              "name": ""
+            }
+          },
+          "handlers": {
+            "null": {
+              "class": "ntm.logs.logs.NtmLogsNullHandler",
+              "level": "INFO"
+            },
+            "socket": {
+              "class": "ntm.logs.logs.NtmLogsSocketHandler",
+              "formatter": "ntm-default",
+              "host": "localhost",
+              "level": "INFO",
+              "port": "logging.handlers.DEFAULT_TCP_LOGGING_PORT"
+            }
+          },
+          "loggers": {
+            "ntm.pre-proc": {
+              "filters": [ "ntm-default" ],
+              "handlers": [ "socket" ],
+              "level": "INFO",
+              "propagate": false
+            }
+          }
+        }
+      },
+      "recomm": {
+        "logging": {
+          "version": 1,
+          "disable_existing_loggers": true,
+          "formatters": {
+            "ntm-default": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)s\t%(levelname)-8s\t%(name)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": false,
+              "single_line": true
+            },
+            "ntm-utc": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)s\t%(levelname)-8s\t%(name)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": true,
+              "single_line": true
+            }
+          },
+          "filters": {
+            "ntm-default": {
+              "()": "ntm.logs.logs.NtmLogsFilter",
+              "name": ""
+            }
+          },
+          "handlers": {
+            "null": {
+              "class": "ntm.logs.logs.NtmLogsNullHandler",
+              "level": "INFO"
+            },
+            "socket": {
+              "class": "ntm.logs.logs.NtmLogsSocketHandler",
+              "formatter": "ntm-default",
+              "host": "localhost",
+              "level": "INFO",
+              "port": "logging.handlers.DEFAULT_TCP_LOGGING_PORT"
+            }
+          },
+          "loggers": {
+            "ntm.recomm": {
+              "filters": [ "ntm-default" ],
+              "handlers": [ "socket" ],
+              "level": "INFO",
+              "propagate": false
+            }
+          }
+        }
+      },
+      "sentiment": {
+        "logging": {
+          "version": 1,
+          "disable_existing_loggers": true,
+          "formatters": {
+            "ntm-default": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)s\t%(levelname)-8s\t%(name)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": false,
+              "single_line": true
+            },
+            "ntm-utc": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)s\t%(levelname)-8s\t%(name)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": true,
+              "single_line": true
+            }
+          },
+          "filters": {
+            "ntm-default": {
+              "()": "ntm.logs.logs.NtmLogsFilter",
+              "name": ""
+            }
+          },
+          "handlers": {
+            "null": {
+              "class": "ntm.logs.logs.NtmLogsNullHandler",
+              "level": "INFO"
+            },
+            "socket": {
+              "class": "ntm.logs.logs.NtmLogsSocketHandler",
+              "formatter": "ntm-default",
+              "host": "localhost",
+              "level": "INFO",
+              "port": "logging.handlers.DEFAULT_TCP_LOGGING_PORT"
+            }
+          },
+          "loggers": {
+            "ntm.sentiment": {
+              "filters": [ "ntm-default" ],
+              "handlers": [ "socket" ],
+              "level": "INFO",
+              "propagate": false
+            }
+          }
+        }
+      },
+      "utilities": {
+        "logging": {
+          "version": 1,
+          "disable_existing_loggers": true,
+          "formatters": {
+            "ntm-default": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)s\t%(levelname)-8s\t%(name)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": false,
+              "single_line": true
+            },
+            "ntm-utc": {
+              "()": "ntm.logs.logs.NtmLogsFormatter",
+              "fmt": "%(asctime)s\t%(levelname)-8s\t%(name)-16s\t%(message)s",
+              "datefmt": "%Y-%m-%d %H:%M:%S %Z",
+              "utc": true,
+              "single_line": true
+            }
+          },
+          "filters": {
+            "ntm-default": {
+              "()": "ntm.logs.logs.NtmLogsFilter",
+              "name": ""
+            }
+          },
+          "handlers": {
+            "null": {
+              "class": "ntm.logs.logs.NtmLogsNullHandler",
+              "level": "INFO"
+            },
+            "socket": {
+              "class": "ntm.logs.logs.NtmLogsSocketHandler",
+              "formatter": "ntm-default",
+              "host": "localhost",
+              "level": "INFO",
+              "port": "logging.handlers.DEFAULT_TCP_LOGGING_PORT"
+            }
+          },
+          "loggers": {
+            "ntm.utilities": {
+              "filters": [ "ntm-default" ],
+              "handlers": [ "socket" ],
+              "level": "INFO",
+              "propagate": false
+            }
+          }
+        }
+      }
+    }
+  }
+}
